@@ -13,7 +13,6 @@ _Usage_:
 (-j number of cores; ifq fastq folder; -np dry run)
 
 **Output files:** Assemblies and depth plots.
-![](img/circos_example.png)
 
 _Dependencies:_ [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic), [IVA](https://sanger-pathogens.github.io/iva/), [circos](http://circos.ca/), [FluDB database](https://www.ncbi.nlm.nih.gov/genomes/FLU/Database/nph-select.cgi?go=database)
 
@@ -24,7 +23,7 @@ Pipeline coded using [Snakemake](https://snakemake.readthedocs.io/en/stable/) an
 
 ----------------------------
 
-Copyright (C) February/2020. Vijaykrishna Dhanasekaranand and Miguel Grau López. WHO Collaborating Centre for Reference and Research on Influenza. Disease Ecology and Evolutionary Genetics Laboratory Monash University
+Copyright (C) February/2020. Vijaykrishna Dhanasekaran and and Miguel Grau López. WHO Collaborating Centre for Reference and Research on Influenza. Disease Ecology and Evolutionary Genetics Laboratory Monash University
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
