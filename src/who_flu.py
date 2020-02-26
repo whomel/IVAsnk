@@ -187,7 +187,7 @@ rule extract_references:
         #awk '!seen[$1]++' {input.blastout} > {input.blastout}_best
         #Remove partial results first
         sed '/partial/d' {input.blastout} | awk '!seen[$1]++' > {input.blastout}_best
-        python tools/bestPerGene_segmentv2.py {input.blastout}_best > {input.blastout}_bestGenes
+        python tools/bestPerGene_segment.py {input.blastout}_best > {input.blastout}_bestGenes
         cut -d$'\t' -f6 {input.blastout}_bestGenes | sort | uniq > {input.blastout}_uniq
         blastdbcmd -db {params.blast_database} -dbtype nucl -entry_batch {input.blastout}_uniq -outfmt "%f" -out {output.blastFasta}
     """
