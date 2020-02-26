@@ -302,7 +302,8 @@ rule FINALconsensus:
             bedtools maskfasta -fi {input.preConsensus} -bed {output.bed} -fo {output.postConsensusMasked}
             python tools/fix_bedtool_id.py {input.preConsensus} {output.postConsensusMasked} > {output.postConsensusMaskedRenamed}
             #Added -I in bcftools call to include IUPAC code
-            cat {output.postConsensusMaskedRenamed} | bcftools consensus -I {output.vcfilt}.gz > {output.postConsensus}
+            #cat {output.postConsensusMaskedRenamed} | bcftools consensus -I {output.vcfilt}.gz > {output.postConsensus}
+            cat {input.preConsensus} | bcftools consensus -m {output.bed} -I {output.vcfilt}.gz > {output.postConsensus}
         else
             touch {output.postConsensus}
             touch {output.vcfIndel}
