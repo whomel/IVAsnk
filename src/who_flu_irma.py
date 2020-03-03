@@ -1,6 +1,6 @@
 #Example
 #source ~/env/.mig/bin/activate
-#snakemake --snakefile who_flu_irma.py -j 48 --config ifq=/Data-RAID5/iseq/raw/illumina/iSeqRun8/ out=out_iseq/iSeqRun8_IRMA/ -np
+#snakemake --snakefile who_flu_irma.py -j 48 --config ifq=/Data-RAID5/iseq/raw/illumina/iSeq11/ out=output/iSeq11_irma/ -np
 
 import subprocess, sys, os, glob
 from os.path import join

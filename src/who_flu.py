@@ -187,7 +187,7 @@ rule extract_references:
         #awk '!seen[$1]++' {input.blastout} > {input.blastout}_best
         #Remove partial results first
         sed '/partial/d' {input.blastout} | awk '!seen[$1]++' > {input.blastout}_best
-        python tools/bestPerGene_segment.py {input.blastout}_best > {input.blastout}_bestGenes
+        python tools/bestPerGene_segmentv2.py {input.blastout}_best > {input.blastout}_bestGenes
         cut -d$'\t' -f6 {input.blastout}_bestGenes | sort | uniq > {input.blastout}_uniq
         blastdbcmd -db {params.blast_database} -dbtype nucl -entry_batch {input.blastout}_uniq -outfmt "%f" -out {output.blastFasta}
     """
@@ -297,7 +297,7 @@ rule FINALconsensus:
             #Filter
             bgzip -c {output.vcfIndel} > {output.vcfIndel}.gz
             #bcftools view -e '(DP4[2]+DP4[3])<(DP4[0]+DP4[1])' {output.vcfIndel}.gz -o {output.vcfilt}
-            python tools/filterVCF.py {output.vcfIndel} 20 > {output.vcfilt}
+            python tools/filterVCF_major200.py {output.vcfIndel} 20 > {output.vcfilt}
             sed -i '/^$/d' {output.vcfilt}
             bgzip -c {output.vcfilt} > {output.vcfilt}.gz
             tabix -p vcf {output.vcfilt}.gz
